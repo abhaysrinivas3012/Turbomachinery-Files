@@ -1,10 +1,20 @@
 from matplotlib.pylab import *
 from numpy import *
+#from efficiency import efficiency
 
+gamma = 1.4
+gam = (gamma-1.)/gamma
+PR = array([1.202699, 1.245618, 1.286069, 1.301606, 1.318778, 1.331579])
+TR = array([1.063539, 1.073113, 1.081921, 1.085347, 1.089198, 1.092167])
+mdot = array([0.7848303, 0.7741172, 0.7567925, 0.7475252, 0.7353464, 0.7241184])
+mdot = mdot * 80
+eff = array([]) 
 
-PR = array([1.20054, 1.23887, 1.277761, 1.292773, 1.308857, 1.3187])
-mdot = array([62.67, 61.45, 59.77, 58.91, 57.668, 56.19])
-eff = array([80.8, 83.96, 86.11, 86.7, 86.96, 86.73]) 
+def efficiency(x,y):
+	return (PR**gam-1)/(TR-1)
+
+eff = efficiency(PR,TR)
+print eff
 
 fig = 1
 figure(fig, figsize=(10, 6))
